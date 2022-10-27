@@ -1,0 +1,12 @@
+version: '3.9'
+
+services:
+  ubuntu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./data:/home/student
+    tty: true
+    user: 1000:1000
+    working_dir: /home/student
