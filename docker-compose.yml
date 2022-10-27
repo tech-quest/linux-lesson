@@ -6,7 +6,11 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ./data:/home/student
+      - ubuntu-home:/home/student
     tty: true
     user: 1000:1000
     working_dir: /home/student
+
+volumes:
+  ubuntu-home:
+    driver: local
