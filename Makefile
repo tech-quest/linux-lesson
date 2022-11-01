@@ -4,13 +4,18 @@ YAML_FILE:=./docker-compose.yml
 up:
 	docker compose -f ${YAML_FILE} up -d
 
+.PHONY: stop
+stop:
+	docker compose -f ${YAML_FILE} stop
+
 .PHONY: rebuild
 rebuild:
 	docker compose -f ${YAML_FILE} up -d --build
 
-.PHONY: stop
-stop:
-	docker compose -f ${YAML_FILE} stop
+.PHONY: refresh
+refresh:
+	@make stop
+	@make rebuild
 
 .PHONY: down
 down:
@@ -19,11 +24,6 @@ down:
 .PHONY: destroy
 destroy:
 	docker compose -f ${YAML_FILE} down --rmi all --volumes --remove-orphans
-
-.PHONY: refresh
-refresh:
-	@make destroy
-	@make up
 
 .PHONY: login
 login:

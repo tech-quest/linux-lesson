@@ -7,10 +7,12 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ubuntu-home:/home/student
+      - ./data/workspace:/home/student/workspace
     tty: true
-    user: 1000:1000
-    working_dir: /home/student
+
 
 volumes:
   ubuntu-home:
+    driver: local
+  workspace:
     driver: local

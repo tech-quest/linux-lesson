@@ -1,0 +1,1 @@
+foo ディレクトリの index.txt です
